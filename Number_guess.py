@@ -1,5 +1,5 @@
 import random
-
+import time
 def welcome():#welcoming the player
     print("Welcome to Number Guessing Game!")
     print("I'm thinking of a number between 1 and 100.\nCan you guess it?")
@@ -24,6 +24,7 @@ def play_game():#the main game
     secret_number = generate_random_number() 
     tries = choosing_difficulty()
     attempts = 0
+    start_time = time.time()
     print(f"You have {tries} attempts to guess the number!")
 
     while attempts < tries:
@@ -36,7 +37,10 @@ def play_game():#the main game
         attempts += 1
         
         if guess == secret_number:
+            end_time  = time.time()
+            elapsed_time = end_time - start_time
             print(f"Congratulations! You guessed the number in {attempts} attempts!")
+            print(f"Time taken: {elapsed_time:.2f} seconds.")
             break
         elif guess > secret_number:
             print("Too high!")
